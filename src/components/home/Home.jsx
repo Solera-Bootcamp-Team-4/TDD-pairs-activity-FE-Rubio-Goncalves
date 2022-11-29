@@ -1,15 +1,8 @@
 import React from 'react';
-import {
-  Button,
-  ButtonGroup,
-  Col,
-  Container,
-  Form,
-  InputGroup,
-  Row,
-} from 'react-bootstrap';
-import ReactDatePicker from 'react-datepicker';
-import SearchOrigin from '../flightSearch/SearchOrigin';
+import { Button, ButtonGroup, Container, Row } from 'react-bootstrap';
+import OneWayForm from '../flightSearchForm/OneWay';
+import RoundTrip from '../flightSearchForm/RoundTrip';
+import SearchAll from '../flightSearchForm/SearchAll';
 import Header from '../header/Header';
 
 export default function Home() {
@@ -27,26 +20,9 @@ export default function Home() {
           </ButtonGroup>
         </Row>
         <Row>
-          <Col>
-            <InputGroup>
-              <InputGroup.Text>From:</InputGroup.Text>
-              <Form.Control as="input" aria-label="With textarea" />
-            </InputGroup>
-          </Col>
-          <Col>
-            <InputGroup>
-              <InputGroup.Text>To:</InputGroup.Text>
-              <Form.Control as="input" aria-label="With textarea" />
-            </InputGroup>
-          </Col>
-        </Row>
-        <Row className="my-2">
-          <Col>
-            <ReactDatePicker />
-          </Col>
-          <Col>
-            <div>Home4</div>
-          </Col>
+          <OneWayForm />
+          <RoundTrip />
+          <SearchAll />
         </Row>
       </Container>
     </>
