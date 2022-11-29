@@ -8,6 +8,7 @@ import {
   InputGroup,
   Row,
 } from 'react-bootstrap';
+import ReactDatePicker from 'react-datepicker';
 import SearchOrigin from '../flightSearch/SearchOrigin';
 import Header from '../header/Header';
 
@@ -39,9 +40,9 @@ export default function Home() {
             </InputGroup>
           </Col>
         </Row>
-        <Row>
+        <Row className="my-2">
           <Col>
-            <div>Home3</div>
+            <ReactDatePicker />
           </Col>
           <Col>
             <div>Home4</div>
