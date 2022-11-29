@@ -21,8 +21,8 @@ export default function Home() {
         </Row>
         <Row>
           <OneWayForm />
-          <RoundTrip />
-          <SearchAll />
+          {/* <RoundTrip />
+          <SearchAll /> */}
         </Row>
       </Container>
     </>
