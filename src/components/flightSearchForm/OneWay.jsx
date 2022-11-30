@@ -1,7 +1,8 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, ButtonGroup, Col, Form, InputGroup } from 'react-bootstrap';
 import ReactDatePicker from 'react-datepicker';
+import { useNavigate } from 'react-router-dom';
 
 // let formData = new FormData();    //formdata object
 
@@ -22,42 +23,45 @@ import ReactDatePicker from 'react-datepicker';
 //         console.log(error);
 //     });
 
-const startDate = new Date();
+// const startDate = new Date();
 
-function handleDateSelect() {
-  console.log('handleDateSelect');
-  console.log(startDate.getDate, ' startDate');
-}
+// function handleDateSelect() {
+//   console.log('handleDateSelect');
+//   console.log(startDate.getDate, ' startDate');
+// }
 
 export default function OneWayForm() {
-  const [to, setTo] = useState('');
+  const navigate = useNavigate();
+
+  const origin = useRef();
+  const destination = useRef();
+  const date = useRef();
+
+  const onSubmitHandler = () => {
+    localStorage.setItem('origin', origin.current.value);
+    localStorage.setItem('destination', destination.current.value);
+    localStorage.setItem('date', date.current.value);
+    console.log(localStorage.getItem('origin'));
+    console.log(localStorage.getItem('destination'));
+    console.log(localStorage.getItem('date'));
+    navigate('results');
+  };
 
   return (
     <>
-      <Form>
+      <Form className="Oneway-form" onSubmit={onSubmitHandler}>
         <Col>
           <InputGroup>
             <InputGroup.Text>From:</InputGroup.Text>
-            <Form.Control as="input" aria-label="With textarea" />
-          </InputGroup>
-          <div className="my-2">
-            Depart:{' '}
-            <ReactDatePicker
-              className="my-2"
-              selected={startDate}
-              onSelect={handleDateSelect}
-            />
-          </div>
-        </Col>
-        <Col>
-          <InputGroup>
+            <Form.Control as="input" aria-label="With textarea" ref={origin} />
             <InputGroup.Text>To:</InputGroup.Text>
             <Form.Control
               as="input"
               aria-label="With textarea"
-              onChange={(e) => setTo(e.target.value)}
+              ref={destination}
             />
           </InputGroup>
+          <Form.Control className="my-2" type="date" ref={date} />
         </Col>
         <ButtonGroup className="my-2" aria-label="Basic example">
           <Button variant="primary" type="submit">
