@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row } from 'react-bootstrap';
 import Header from '../header/Header';
+import Flights from './Flights';
 
 export default function Results() {
   return (
@@ -13,6 +14,7 @@ export default function Results() {
             {localStorage.getItem('destination')} on{' '}
             {localStorage.getItem('date')}
           </div>
+          <Flights />
         </Row>
       </Container>
     </>
